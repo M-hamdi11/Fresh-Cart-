@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+[data-slot="input-wrapper"]:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #16a34a !important;
+}
+.cat-card { transition: all 0.3s; }
+.cat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: #86efac !important; }
+.cat-card:hover .cat-img { transform: scale(1.1); }
+.cat-card:hover .cat-title { color: #16a34a; }
+.cat-arrow { opacity: 0; transition: opacity 0.3s; }
+.cat-card:hover .cat-arrow { opacity: 1; }
