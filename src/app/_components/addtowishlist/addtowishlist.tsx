@@ -11,7 +11,7 @@ export default function Addtowishlist({ product_id, children }: { product_id: st
     async function handleAddToWishlist() {
         const datanumber = await addtowishlistaction(product_id);
         if (datanumber === undefined) {
-            toast.error("Something went wrong");
+            toast.error("please login first");
         } else {
             toast.success("Product added to wishlist");
             setCount(datanumber);

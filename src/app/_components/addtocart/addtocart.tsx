@@ -3,6 +3,7 @@ import { useCartStore } from "@/app/_store/cartstore";
 import { toast } from "react-toastify";
 import { addtocartactions } from "./addtocartserver";
 import { useTransition } from "react";
+import login from './../../(auth)/login/page';
 
 export function AddToCartButton({ productId,children,classnames }: { productId: string ,children?: React.ReactNode, classnames?: string }) {
   const setCount = useCartStore((s) => s.setCount);
@@ -15,7 +16,7 @@ export function AddToCartButton({ productId,children,classnames }: { productId: 
         setCount(newCount); 
         toast.success("Product added to cart!");
       } else {
-        toast.error("Failed to add product");
+        toast.error("please login first");
       }
     });
   };
