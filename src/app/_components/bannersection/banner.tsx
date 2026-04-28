@@ -34,7 +34,7 @@ export default function BannerSection() {
               </div>
               
               <Link 
-                href="/products" 
+                href="/shop" 
                 className="inline-flex items-center gap-3 bg-white text-emerald-700 px-8 py-3.5 rounded-full font-bold hover:bg-emerald-50 transition-all shadow-lg active:scale-95"
               >
                 Shop Now
@@ -70,7 +70,7 @@ export default function BannerSection() {
               </div>
               
               <Link 
-                href="/products?sort=newest" 
+                href="/shop" 
                 className="inline-flex items-center gap-3 bg-white text-orange-600 px-8 py-3.5 rounded-full font-bold hover:bg-orange-50 transition-all shadow-lg active:scale-95"
               >
                 Explore Now
