@@ -1,8 +1,8 @@
 import React from 'react'
-import Searchtest from '../_components/seachtest/searchtest'
 import SearchResults from './searchresltpage'
 import { get_all_products } from '@/api/services/rout.services';
 import Internalsearch from './internalsearch';
+import { ProductType } from '@/api/types';
 
 export default async function searchpage() {
   const allproducts =await get_all_products();
@@ -10,7 +10,7 @@ export default async function searchpage() {
     
     <>
      <Internalsearch/>
-    <SearchResults products={allproducts} searchQuery={""} />
+    <SearchResults products={allproducts as ProductType[]} searchQuery={""} />
    
 </>
   )

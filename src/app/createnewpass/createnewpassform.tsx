@@ -34,7 +34,7 @@ export default function ResetPasswordForm() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(zodschema),
   });
-  async function onSubmit(data) {
+  async function onSubmit(data: any) {
 
     const resetpassword =await resetpass( data.password , email);
     if(resetpassword){

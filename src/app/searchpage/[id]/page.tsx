@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 import Internalsearch from '../internalsearch';
 import SearchResults from '../searchresltpage';
+import { ProductType } from '@/api/types';
 
 export default async function serchresult({params}: { params: Promise<{ id: string }> }) {
 
@@ -13,7 +14,7 @@ export default async function serchresult({params}: { params: Promise<{ id: stri
   return (
     <>
     <Internalsearch/>
-    <SearchResults products={allproducts} searchQuery={id}/>
+    <SearchResults products={allproducts as ProductType[]} searchQuery={id}/>
 
     </>
 

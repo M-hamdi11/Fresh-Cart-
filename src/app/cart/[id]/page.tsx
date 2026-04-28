@@ -43,23 +43,37 @@ export default function CheckoutPage() {
   useEffect(() => {
     async function fetchCart() {
       try {
-        const res = await getcartaction();
-        setData(res);
-        const alladdres = await getalladdressaction() as addressresponsedatatype ;
-        const spacificaddress = await getspacificaddressaction(alladdres[0]._id) as addressresponsedatatype ;
+        setLoading(true);
 
-        setAddress(alladdres);
-        setSelectedAddress(spacificaddress);
-        
+        // 1. جلب بيانات السلة
+        const res = await getcartaction();
+        setData(res ?? null); // تحويل الـ undefined لـ null
+
+        // 2. جلب كل العناوين
+        const alladdres = await getalladdressaction() as addressresponsedatatype;
+
+        // التأكد من أن alladdres مصفوفة ولديها عناصر
+        if (alladdres && Array.isArray(alladdres) && alladdres.length > 0) {
+          setAddress(alladdres);
+
+          // 3. جلب تفاصيل أول عنوان
+          const specificAddress = await getspacificaddressaction(alladdres[0]._id);
+          setSelectedAddress(specificAddress ?? null);
+        } else {
+          // حالة عدم وجود عناوين: نمرر مصفوفة فاضية مع عمل Type Casting لتجنب never[]
+          setAddress([] as unknown as addressresponsedatatype);
+          setSelectedAddress(null);
+        }
+
       } catch (err) {
-        console.log(err);
+        console.error("Error in fetchCart:", err);
       } finally {
         setLoading(false);
       }
     }
+
     fetchCart();
   }, []);
-
   const {
     handleSubmit,
     register,

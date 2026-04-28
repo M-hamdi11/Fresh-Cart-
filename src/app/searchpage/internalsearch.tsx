@@ -3,10 +3,10 @@ import Link from 'next/link'
 import React, { useContext } from 'react'
 import { HiHome } from 'react-icons/hi'
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2'
-import { WishlistContext } from '../_context/wishlistcontext'
+import { WishlistContext, WishlistContextType } from '../_context/wishlistcontext'
 
 export default function Internalsearch() {
-    const { searchvalue, setsearchvalue } = useContext(WishlistContext);
+  const { numberofwishlistitems, setsearchvalue, searchvalue } = useContext(WishlistContext) as WishlistContextType;
   return (
        <div className="container mx-auto px-4 py-6">
          {/* Breadcrumbs (النفيجيشن الفرعي) */}

@@ -54,7 +54,7 @@ providers:[
      callbacks:{
         jwt(params){
         if(params.user){
-         params.token.token=params.user.usertoken;
+         params.token.token=(params.user as any).usertoken;
          params.token.id=params.user.id;
         }
 
@@ -65,7 +65,7 @@ providers:[
 
         session(params){
 
-        params.session.user.id=params.token.id;
+        (params.session.user as any).id=(params.token.id)as string ;
          
           return params.session;
               

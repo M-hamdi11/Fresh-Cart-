@@ -1,6 +1,7 @@
 import { get_all_categories } from '@/api/services/rout.services';
 import React from 'react';
-import CategoryCard from './categorycard';
+import CategoryCard, { Categorytype } from './categorycard';
+
 export default async function Categories() {
   const categories = await get_all_categories();
 
@@ -12,7 +13,7 @@ export default async function Categories() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 items-stretch">
     {categories.map((cat) => (
-      <CategoryCard key={cat._id} category={cat} />
+      <CategoryCard key={cat._id} category={cat as unknown as Categorytype} />
     ))}
   </div>
   );

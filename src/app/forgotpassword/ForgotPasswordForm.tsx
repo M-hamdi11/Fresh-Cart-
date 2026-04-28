@@ -10,14 +10,14 @@ import { useRouter } from 'next/navigation';
 
 export default function ForgotPasswordForm() {
   // 2. عمل مرجع (Ref) للـ input
-  const emailRef = useRef(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
   const router=useRouter();
 
-  async function handleSubmit(e){
+  async function handleSubmit(e : React.FormEvent) {
     e.preventDefault();
     
     // 3. سحب القيمة من الـ Ref عند الضغط على الزرار
-    const emailValue = emailRef.current?.value;
+    const emailValue = emailRef.current?.value as string;
     const res = await forgotpasswordaction(emailValue);
 if(res.statusMsg=="success"){
     toast.success(`${res.message}`);

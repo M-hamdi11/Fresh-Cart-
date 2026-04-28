@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-type Category = {
+ export type Categorytype = {
   _id: string;
   name: string;
   image: string;
 };
 
-export default function CategoryCard({ category }: { category: Category }) {
+export default function CategoryCard({ category }: { category: Categorytype }) {
   return (
     <>
       <Link

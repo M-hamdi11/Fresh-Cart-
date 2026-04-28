@@ -13,14 +13,14 @@ export default function VerifyCodeForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const email = searchParams.get('email') || "your email"; // استقبال الإيميل
-  const codeRef = useRef(null);
+  const codeRef = useRef<HTMLInputElement>(null);
 
-  const handleVerify = async (e) => {
+  const handleVerify = async (e:React.FormEvent) => {
     e.preventDefault();
     const codeValue = codeRef.current?.value;
     console.log("Verifying code:", codeValue, "for email:", email);
     const result=await handleverfycodeaction(codeValue as string);
-    if(result.status=="Success"){
+    if(result.status=="Success"){ 
       toast.success(`valid code`);
      router.push(`/createnewpass?email=${encodeURIComponent(email)}`);
 
